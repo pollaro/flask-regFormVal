@@ -1,0 +1,23 @@
+.surveyBox{
+    /*text-align: center;*/
+    border: thin solid black;
+    display: inline-block;
+    padding: 1%;
+    margin: 1%;
+    width: 20em;
+}
+
+.surveyBox span{
+    color: red;
+}
+
+#inputs{
+    display: inline-block;
+    text-align: right;
+}
+
+#dojoSurvey input{
+    display:inline;
+    margin: 1% auto;
+    text-align: right;
+}

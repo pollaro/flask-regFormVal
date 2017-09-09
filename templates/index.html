@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dojo Survey</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='css/indexStyle.css')}}">
+    </head>
+    <body>
+        <div class="surveyBox">
+            <form id="dojoSurvey" action="/result" method="post">
+                <div id="inputs">
+                    {% with first = get_flashed_messages(category_filter='firstError') %}
+                        {% if first %}
+                            <span>{{ first[0] }}</span><br>
+                        {% endif %}
+                    {% endwith %}
+                    First Name: <input type="text" name="firstName">
+                    <br>
+                    {% with last = get_flashed_messages(category_filter='lastError') %}
+                        {% if last %}
+                            <span>{{ last[0] }}</span><br>
+                        {% endif %}
+                    {% endwith %}
+                    Last Name: <input type="text" name="lastName">
+                    <br>
+                    {% with emailErr = get_flashed_messages(category_filter='emailError') %}
+                        {% if emailErr %}
+                            <span>{{ emailErr[0] }}</span><br>
+                        {% endif %}
+                    {% endwith %}
+                    Email: <input type="text" name="email">
+                    <br>
+                    {% with passShrt = get_flashed_messages(category_filter='passShort') %}
+                        {% if passShrt %}
+                            <span>{{ passShrt[0] }}</span><br>
+                        {% endif %}
+                    {% endwith %}
+                    Password: <input type="password" name="passwrd">
+                    <br>
+                    {% with passMtch = get_flashed_messages(category_filter='passMatch') %}
+                        {% if passMtch %}
+                            <span>{{ passMtch[0] }}</span><br>
+                        {% endif %}
+                    {% endwith %}
+                    Confirm Password: <input type="password" name="confirmPass">
+                <br>
+                <input type="submit" name="Submit">
+                {% with msgs = get_flashed_messages(category_filter='correct') %}
+                    {% if msgs %}
+                        <br><span>{{ msgs[0] }}</span>
+                    {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+    </body>
+</html>
